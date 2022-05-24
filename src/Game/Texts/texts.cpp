@@ -3,6 +3,12 @@
 #include "../Entities/player.h"
 #include "../PlayerInput.h"
 
+std::string get_commands()
+{
+    auto command = get_command_from_player();
+    return command;
+}
+
 void show_commands()
 {
     std::cout << "[Y / N]" << std::endl;
@@ -27,7 +33,7 @@ So, ready to take your sword and shield ?
     )" << std::endl;
 }
 
-void show_intro()
+void display_intro()
 {
     std::cout << R"(
 Excellent ! 
@@ -50,9 +56,8 @@ void bad_name(player& hero)
     hero = set_player();
 }
 
-void display_intro() //
+void create_player()
 {
-    show_intro();
     player hero = set_player();
     show_player_name(hero);
     show_commands();
@@ -136,70 +141,6 @@ void no_tutorial()
     }
 }
 
-void quit_or_stay()
-{
-    std::cout << "You know that if you stop now you will lose all your progression and you will have to start again from 0 ? You still want to quit ?" << std::endl;
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        std::cout << "Well, too bad for you ! But don't come and complain afterwards !" << std::endl;
-    }
-    else if (command == 'n') {
-        std::cout << "Well then ! Stop wasting my time and let's go !" << std::endl;
-    }
-    else {
-        std::cout << unknow << std::endl;
-    }
-}
-
-void stop()
-{
-    std::cout << "What do you mean no ?? You want to stop there ??" << std::endl;
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        quit_or_stay();
-    }
-    else if (command == 'n') {
-        std::cout << "Phew ! I thought you wanted to stop ! Well that's not all but the next level doesn't wait !" << std::endl;
-    }
-    else {
-        std::cout << unknow << std::endl;
-    }
-}
-
-void continue_the_game()
-{
-    std::cout << "Good ! Let's go to the next room !" << std::endl;
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        std::cout << "Great !" << std::endl;
-    }
-    else if (command == 'n') {
-        stop();
-    }
-    else {
-        std::cout << unknow << std::endl;
-    }
-}
-
-void quit_room()
-{
-    std::cout << "Did you get everything ?" << std::endl;
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        continue_the_game();
-    }
-    else if (command == 'n') {
-        std::cout << "Hurry up, the next room doesn't wait !" << std::endl;
-    }
-    else {
-        std::cout << unknow << std::endl;
-    }
-}
-
 void display_game()
 {
     std::cout << R"(
@@ -240,6 +181,7 @@ void display_title_screen()
         const auto command = get_character_from_player();
         if (command == 'y') {
             display_intro();
+            create_player();
             display_game();
         }
         else if (command == 'n') {

@@ -48,8 +48,19 @@ void culmulative_distribution()
     std::cout << X << std::endl;
 }
 
-float expo(float gamma)
+float expo(float lambda)
 {
     float proba = (float)rand() / RAND_MAX;
-    return (-gamma * log(1 - proba));
+    return ((-log(proba) / lambda));
 }
+
+/*
+Loi Binomiale
+Loi Rademacher
+Loi de Bernoulli
+Loi exponentielle
+Loi uniforme --> Dans chest.h
+Markov --> salle
+BoxMuller sqrt(- 2 log U1)
+X1....Xn loi expo indé, somme --> Loi Gamma (N,T)
+*/

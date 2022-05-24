@@ -1,40 +1,36 @@
 #include <math.h>
 #include <stdlib.h>
 #include <ctime>
-#include <iostream>
 #include <string>
-#include <vector>
-#include "Game/Texts/texts.h"
+#include "Game/Texts/chest.h"
+#include "Game/game.h"
+#include "Game/maths.h"
 
-/*struct monster {
-    std::string name;
-    int         level;
-    int         PV;
-};*/
-
-const std::vector<std::string> objects = {
-    "Sword",
-    "Potion",
-    "Armor",
-    "Gold",
-};
-
-void open_chest(const std::vector<std::string> objects)
+/*void rademacher()
 {
-    float proba = (float)rand() / RAND_MAX;
-    for (size_t i = 0; i < objects.size(); i++) {
-        float min = i / 4.f;
-        float max = (i + 1) / 4.f;
-        if (proba >= min && proba < max) {
-            std::cout << "Tu as obtenu " << objects[i] << " !" << std::endl;
-        }
+    int tirage = rand() % (1 + 0 + 1) + 0;
+    if (tirage == 0) {
+        std::cout << "Perdu" << std::endl;
+    }
+    else if (tirage == 1) {
+        std::cout << "Gagné" << std::endl;
+        open_chest(loots);
+    }
+    else {
+        std::cout << "Bonne question" << std::endl;
     }
 }
-
+*/
 int main()
 {
     auto seedTime = time(NULL);
     srand(static_cast<unsigned int>(seedTime));
-    display_title_screen();
+    // rademacher();
+    // std::cout << expo(0.05f) << std::endl;
+    /*const auto command = get_commands();
+    if (command == "open") {
+        open_chest(items);
+    }*/
+    dungeon_adventure();
     return 0;
 }
