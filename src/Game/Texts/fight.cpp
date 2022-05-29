@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../Entities/player.h"
 #include "../PlayerInput.h"
+#include "chest.h"
 
 static void show_fight_command()
 {
@@ -29,6 +30,14 @@ static void run()
 static void heal(player& player)
 {
     player.PV += 5;
+}
+
+static void monster_drop()
+{
+    int tirage = rand() % (1 + 0 + 1) + 0;
+    if (tirage == 1) {
+        open_chest(loots);
+    }
 }
 
 void fight(player& playerone, player& playertwo)
