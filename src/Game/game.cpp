@@ -6,11 +6,11 @@ static void introduction()
     display_title_screen();
 }
 
-static void end()
-{
-}
-
 void dungeon_adventure()
 {
     introduction();
+}
+
+static void end()
+{
 }

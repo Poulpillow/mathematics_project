@@ -31,12 +31,12 @@ static void heal(player& player)
     player.PV += 5;
 }
 
-void fight(player& player, player& playertwo)
+void fight(player& playerone, player& playertwo)
 {
     const auto command = get_command_from_player();
     if (command == "fight") {
         std::cout << "fight" << std::endl;
-        attack(player, playertwo);
+        attack(playerone, playertwo);
     }
     else if (command == "run") {
         std::cout << "run" << std::endl;
@@ -44,7 +44,7 @@ void fight(player& player, player& playertwo)
     }
     else if (command == "heal") {
         std::cout << "heal" << std::endl;
-        heal(player);
+        heal(playerone);
     }
     else {
         std::cout << unknow << std::endl;
