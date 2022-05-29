@@ -9,10 +9,6 @@ int main()
     auto seedTime = time(NULL);
     srand(static_cast<unsigned int>(seedTime));
     // std::cout << expo(0.05f) << std::endl;
-    /*const auto command = get_commands();
-    if (command == "open") {
-        open_chest(items);
-    }*/
 
     dungeon_adventure();
     return 0;
@@ -85,7 +81,7 @@ fight.cpp
 
     fight()
     {
-        while(player.pv!=0 || monster.pv!=0)
+        while(player.pv!=0 && monster.pv!=0)
         {
             if(is_player_turn)
             {

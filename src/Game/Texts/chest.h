@@ -4,7 +4,7 @@
 #include <vector>
 #include "../Entities/objects.h"
 
-void show_chest_command()
+inline void show_chest_command()
 {
     std::cout << "[Open]" << std::endl;
 }
@@ -23,7 +23,7 @@ const std::vector<std::string> loots = {
     "Gold",
 };
 
-objects get_object(const std::vector<std::string>& items)
+inline objects get_object(const std::vector<std::string>& items)
 {
     float   proba = (float)rand() / RAND_MAX;
     objects item  = set_object("null", 0);
@@ -37,7 +37,7 @@ objects get_object(const std::vector<std::string>& items)
     return item;
 }
 
-void open_chest(const std::vector<std::string>& items)
+inline void open_chest(const std::vector<std::string>& items)
 {
     objects item_obt = get_object(items);
     show_objects(item_obt);

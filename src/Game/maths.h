@@ -55,10 +55,10 @@ float expo(float lambda)
 }
 
 /*
-Loi Binomiale
-Loi Rademacher
-Loi de Bernoulli
-Loi exponentielle
+Loi Binomiale --> Fuite
+Loi Rademacher --> Loot
+Loi de Bernoulli --> Attaque spé
+Loi exponentielle --> Puissance de l'attaque
 Loi uniforme --> Dans chest.h
 Markov --> salle
 BoxMuller sqrt(- 2 log U1)

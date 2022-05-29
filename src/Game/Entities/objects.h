@@ -7,7 +7,7 @@ struct objects {
     int         effect;
 };
 
-objects set_object(const std::string& name, const int& effect)
+inline objects set_object(const std::string& name, const int& effect)
 {
     objects item;
     item.name   = name;
@@ -15,7 +15,7 @@ objects set_object(const std::string& name, const int& effect)
     return item;
 };
 
-void show_objects(const objects& item)
+inline void show_objects(const objects& item)
 {
     std::cout << "You got a " << item.name << std::endl;
 };

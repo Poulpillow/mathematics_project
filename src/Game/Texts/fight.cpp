@@ -1,6 +1,5 @@
 #include "fight.h"
 #include <iostream>
-#include "../Entities/player.h"
 #include "../PlayerInput.h"
 #include "chest.h"
 
@@ -40,22 +39,35 @@ static void monster_drop()
     }
 }
 
-void fight(player& playerone, player& playertwo)
+void fight(player& playerone, Monster& monsterone)
 {
-    const auto command = get_command_from_player();
-    if (command == "fight") {
-        std::cout << "fight" << std::endl;
-        attack(playerone, playertwo);
+    while (player_is_alive(playerone) && monster_is_alive(monsterone)) {
+        bool player_turn = true;
+        if (player_turn) {
+            const auto command = get_command_from_player();
+            if (command == "fight") {
+                std::cout << "fight" << std::endl;
+                attack(playerone, monsterone);
+            }
+            else if (command == "run") {
+                std::cout << "run" << std::endl;
+                run();
+            }
+            else if (command == "heal") {
+                std::cout << "heal" << std::endl;
+                heal(playerone);
+            }
+            else {
+                std::cout << unknow << std::endl;
+            }
+            player_turn = false;
+        }
+        else {
+            attack(monsterone, playerone);
+            player_turn = true;
+        }
     }
-    else if (command == "run") {
-        std::cout << "run" << std::endl;
-        run();
-    }
-    else if (command == "heal") {
-        std::cout << "heal" << std::endl;
-        heal(playerone);
-    }
-    else {
-        std::cout << unknow << std::endl;
+    if (player_is_alive(playerone)) {
+        monster_drop();
     }
 }
