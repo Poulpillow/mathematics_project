@@ -32,30 +32,36 @@ inline objects get_object(const std::vector<std::string>& items)
         float min = i / 4.f;
         float max = (i + 1) / 4.f;
         if (proba >= min && proba < max) {
-            item = set_object(items[i], 5);
+            int effect = (rand() % 5) + 1;
+            item       = set_object(items[i], effect);
         }
     }
     return item;
-}
-
-inline void open_chest(const std::vector<std::string>& items)
-{
-    objects item_obt = get_object(items);
-    show_objects(item_obt);
 }
 
 inline void apply_item(player& playerone, const objects& item)
 {
     if (item.name == "Sword" || item.name == "Claw") {
         playerone.atk += item.effect;
+        std::cout << "You have " << playerone.atk << " attack" << std::endl;
     }
     else if (item.name == "Armor" || item.name == "Leather") {
         playerone.def += item.effect;
+        std::cout << "You have " << playerone.def << " defence" << std::endl;
     }
     else if (item.name == "Potion" || item.name == "Medicinal herbs") {
         playerone.PV += item.effect;
+        std::cout << "You have " << playerone.PV << " PV" << std::endl;
     }
     else if (item.name == "Gold") {
         playerone.gold += item.effect;
+        std::cout << "You have " << playerone.gold << " gold" << std::endl;
     }
+}
+
+inline void open_chest(const std::vector<std::string>& items, player& playerone)
+{
+    objects item_obt = get_object(items);
+    show_objects(item_obt);
+    apply_item(playerone, item_obt);
 }

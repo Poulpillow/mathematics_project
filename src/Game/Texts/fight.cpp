@@ -1,6 +1,7 @@
 #include "fight.h"
 #include <iostream>
 #include "../PlayerInput.h"
+#include "../maths.h"
 #include "chest.h"
 
 static void show_fight_command()
@@ -11,51 +12,59 @@ static void show_fight_command()
 template<typename Ack, typename Def>
 void attack(Ack& fighter, Def& victim)
 {
-    victim.PV = victim.PV - (fighter.atk - victim.def);
-}
-
-static void run()
-{
-    /*
-    Tirage
-    Regarde proba
-    Si oui
-        Nouvelle salle
-    Si non
-        Raté... Good luck
-    */
+    int bonus_atk = static_cast<int>(expo(0.5));
+    std::cout << bonus_atk << std::endl;
+    int pv_lost = victim.def - fighter.atk - bonus_atk;
+    if (pv_lost < 0) {
+        victim.PV += pv_lost;
+        std::cout << victim.name << " loss " << pv_lost << std::endl;
+    }
+    // std::cout << victim.PV << std::endl;
+    // std::cout << victim.def << " " << victim.atk << std::endl;
 }
 
 static void heal(player& player)
 {
     player.PV += 5;
+    std::cout << "You have " << player.PV << std::endl;
 }
 
-static void monster_drop()
+static void monster_drop(player& playerone)
 {
     int tirage = rand() % (1 + 0 + 1) + 0;
     if (tirage == 1) {
-        open_chest(loots);
+        open_chest(loots, playerone);
     }
 }
 
 void fight(player& playerone, Monster& monsterone)
 {
+    show_monster_name(monsterone);
+    bool player_turn = true;
     while (player_is_alive(playerone) && monster_is_alive(monsterone)) {
-        bool player_turn = true;
         if (player_turn) {
             show_fight_command();
             const auto command = get_command_from_player();
             if (command == "fight") {
-                std::cout << "fight" << std::endl;
                 attack(playerone, monsterone);
             }
             else if (command == "run") {
-                std::cout << "run" << std::endl;
-                run();
+                if (playerone.PV < 3) {
+                    std::cout << "You ran away from the fight." << std::endl;
+                    break;
+                }
+                else {
+                    float tirage = (float)rand() / RAND_MAX;
+                    if (tirage < 0.2) {
+                        std::cout << "You ran away from the fight." << std::endl;
+                        break;
+                    }
+                    else {
+                        std::cout << "You tried to ran away... To bad you miss." << std::endl;
+                    }
+                }
             }
             else if (command == "heal") {
-                std::cout << "heal" << std::endl;
                 heal(playerone);
             }
             else {
@@ -64,11 +73,12 @@ void fight(player& playerone, Monster& monsterone)
             player_turn = false;
         }
         else {
+            std::cout << monsterone.name << " attack" << std::endl;
             attack(monsterone, playerone);
             player_turn = true;
         }
     }
     if (player_is_alive(playerone)) {
-        monster_drop();
+        monster_drop(playerone);
     }
 }

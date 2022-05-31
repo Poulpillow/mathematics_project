@@ -1,3 +1,4 @@
 #pragma once
+#include "../Entities/player.h"
 
-void room();
+void room(player& playerone);

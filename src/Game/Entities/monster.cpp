@@ -1,10 +1,36 @@
 #include "monster.h"
+#include "math.h"
+
+static void get_stats(Monster& monster)
+{
+    float first_number  = (float)rand() / RAND_MAX;
+    float second_number = (float)rand() / RAND_MAX;
+
+    double attack  = sqrt(-2 * log(first_number)) * cos(2 * 3.14 * second_number);
+    double defence = sqrt(-2 * log(first_number)) * sin(2 * 3.14 * second_number);
+    ;
+
+    monster.atk += static_cast<int>(attack);
+    monster.def += static_cast<int>(defence);
+}
 
 Monster set_monster()
 {
     Monster monster;
-    std::cout << "What your name ? ";
-    std::cin >> monster.name;
+    float   tirage = (float)rand() / RAND_MAX;
+    if (tirage < 0.4) {
+        monster.name = monster_name[0];
+    }
+    else if (0.4 < tirage && tirage < 0.6) {
+        monster.name = monster_name[1];
+    }
+    else if (0.6 < tirage && tirage < 0.8) {
+        monster.name = monster_name[2];
+    }
+    else {
+        monster.name = monster_name[3];
+    }
+    get_stats(monster);
     return monster;
 }
 

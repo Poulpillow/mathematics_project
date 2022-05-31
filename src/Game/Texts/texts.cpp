@@ -104,7 +104,9 @@ Well I can't let you go like that !
 
 void tutorial()
 {
-    std::cout << "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec aliquam elementum lectus id sollicitudin. Nunc a vestibulum nunc, a tincidunt leo. Pellentesque sagittis erat nisi, eget laoreet felis tempor pellentesque. Aenean vitae erat odio. Integer sed efficitur nunc. Integer rhoncus dolor a ex ultrices, quis varius tellus pharetra. Suspendisse potenti. Donec eget euismod ligula. Donec vitae dui odio. Proin vel lorem vitae orci ullamcorper consequat. Duis laoreet nisl et ultrices ultricies. Pellentesque lacinia diam enim, vulputate consectetur quam semper a. Quisque rutrum consectetur pellentesque. Nunc commodo ex vel turpis facilisis ullamcorper. Pellentesque vitae ornare tellus." << std::endl;
+    std::cout << R"(
+Blablabla
+    )" << std::endl;
 }
 
 void show_tutorial()
@@ -175,24 +177,24 @@ But tell me before you go in, have you ever fought monsters before ?
 
 player display_title_screen()
 {
-    bool   quit = false;
+    // bool   quit = false;
     player hero;
     show_title();
     show_commands();
-    while (!quit) {
-        const auto command = get_character_from_player();
-        if (command == 'y') {
-            display_intro();
-            hero = create_player();
-            display_game();
-        }
-        else if (command == 'n') {
-            std::cout << "Really ? Ah ... Too bad adventurer ..." << std::endl;
-            quit = true;
-        }
-        else {
-            std::cout << unknow << std::endl;
-        }
+    // while (!quit) {
+    const auto command = get_character_from_player();
+    if (command == 'y') {
+        display_intro();
+        hero = create_player();
+        display_game();
     }
+    else if (command == 'n') {
+        std::cout << "Really ? Ah ... Too bad adventurer ..." << std::endl;
+        // quit = true;
+    }
+    else {
+        std::cout << unknow << std::endl;
+    }
+    //}
     return hero;
 }
