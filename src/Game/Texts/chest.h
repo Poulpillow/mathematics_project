@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "../Entities/objects.h"
+#include "../Entities/player.h"
 
 inline void show_chest_command()
 {
@@ -41,4 +42,20 @@ inline void open_chest(const std::vector<std::string>& items)
 {
     objects item_obt = get_object(items);
     show_objects(item_obt);
+}
+
+inline void apply_item(player& playerone, const objects& item)
+{
+    if (item.name == "Sword" || item.name == "Claw") {
+        playerone.atk += item.effect;
+    }
+    else if (item.name == "Armor" || item.name == "Leather") {
+        playerone.def += item.effect;
+    }
+    else if (item.name == "Potion" || item.name == "Medicinal herbs") {
+        playerone.PV += item.effect;
+    }
+    else if (item.name == "Gold") {
+        playerone.gold += item.effect;
+    }
 }
