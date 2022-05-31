@@ -12,9 +12,9 @@ const std::vector<std::string> monster_name = {
 
 struct Monster {
     std::string name;
-    int         PV  = 40;
-    int         atk = 5;
-    int         def = 5;
+    int         PV  = 15;
+    int         atk = 2;
+    int         def = 2;
 };
 
 Monster set_monster();

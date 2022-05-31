@@ -13,7 +13,6 @@ static int set_room()
         std::cout << "That's not a number between " << std::to_string(0.01) << " and " << std::to_string(0.99) << ". ";
     }
     number_room += geometric(number_choosen);
-    std::cout << number_room << std::endl;
     return number_room;
 }
 
@@ -70,5 +69,16 @@ void dungeon_adventure()
     }
     else {
         std::cout << "HARDCORE" << std::endl;
+    }
+
+    // Last message
+    std::cout << "LAST MESSAGE\n"
+              << "TRY AGAIN ?\n[Y/N]" << std::endl;
+    const auto command = get_character_from_player();
+    if (command == 'y') {
+        dungeon_adventure();
+    }
+    else {
+        std::cout << "SEE YOU SOON" << std::endl;
     }
 }
