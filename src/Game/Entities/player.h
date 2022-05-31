@@ -4,9 +4,10 @@
 
 struct player {
     std::string name;
-    int         PV  = 50;
-    int         atk = 5;
-    int         def = 5;
+    int         PV   = 50;
+    int         atk  = 5;
+    int         def  = 5;
+    int         gold = 0;
 };
 
 player set_player();
