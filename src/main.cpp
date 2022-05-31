@@ -1,16 +1,29 @@
 #include <math.h>
 #include <stdlib.h>
 #include <ctime>
+#include "Game/PlayerInput.h"
 #include "Game/game.h"
 #include "Game/maths.h"
 
 int main()
 {
+    // Init for random
     auto seedTime = time(NULL);
     srand(static_cast<unsigned int>(seedTime));
-    // std::cout << expo(0.05f) << std::endl;
 
+    // First time
     dungeon_adventure();
+
+    // Last message
+    std::cout << "LAST MESSAGE\n"
+              << "TRY AGAIN ?\n[Y/N]" << std::endl;
+    const auto command = get_character_from_player();
+    if (command == 'y') {
+        dungeon_adventure();
+    }
+    else {
+        std::cout << "SEE YOU SOON" << std::endl;
+    }
     return 0;
 }
 

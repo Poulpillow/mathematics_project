@@ -16,5 +16,5 @@ void show_player_name(player player)
 
 bool player_is_alive(player player)
 {
-    return player.PV;
+    return (player.PV < 0) ? false : true;
 }

@@ -4,16 +4,20 @@
 #include "../PlayerInput.h"
 #include "chest.h"
 #include "fight.h"
+#include "texts.h"
 
 void room(player& playerone)
 {
     const int number_monster = (rand() % 3);
-    std::cout << number_monster << std::endl;
     if (number_monster == 0) {
         show_chest_command();
         const auto command = get_command_from_player();
         if (command == "open") {
             open_chest(items, playerone);
+            playerone.chest_encounters++;
+        }
+        else {
+            std::cout << unknow << std::endl;
         }
     }
     else {

@@ -60,17 +60,21 @@ player create_player()
 {
     player hero = set_player();
     show_player_name(hero);
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        good_name();
-    }
-    else if (command == 'n') {
-        bad_name(hero);
-        show_player_name(hero);
-    }
-    else {
-        std::cout << unknow << std::endl;
+    while (true) {
+        show_commands();
+        const auto command = get_character_from_player();
+        if (command == 'y') {
+            good_name();
+            break;
+        }
+        else if (command == 'n') {
+            bad_name(hero);
+            show_player_name(hero);
+            break;
+        }
+        else {
+            std::cout << unknow << std::endl;
+        }
     }
     return hero;
 }
@@ -81,16 +85,20 @@ void did_fight()
 Ah ! Here is a proud fighter ! 
 And did you already win ?
     )" << std::endl;
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        std::cout << "You know that lying won't help you win, right ?" << std::endl;
-    }
-    else if (command == 'n') {
-        std::cout << "Ah ... Will have to review the basics from what I see ..." << std::endl;
-    }
-    else {
-        std::cout << unknow << std::endl;
+    while (true) {
+        show_commands();
+        const auto command = get_character_from_player();
+        if (command == 'y') {
+            std::cout << "You know that lying won't help you win, right ?" << std::endl;
+            break;
+        }
+        else if (command == 'n') {
+            std::cout << "Ah ... Will have to review the basics from what I see ..." << std::endl;
+            break;
+        }
+        else {
+            std::cout << unknow << std::endl;
+        }
     }
 }
 
@@ -113,34 +121,42 @@ void show_tutorial()
 {
     tutorial();
     std::cout << "Did you understand everything ?" << std::endl;
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        std::cout << "You're smarter than I thought ! Good for you ! Now let's go on an adventure !" << std::endl;
-    }
-    else if (command == 'n') {
-        std::cout << "Mmmm there's no point in skipping the explanations you know ? Well, you're lucky I'm in a good mood today ! I'll explain it again but this time listen carefully !" << std::endl;
-        tutorial();
-    }
-    else {
-        std::cout << unknow << std::endl;
+    while (true) {
+        show_commands();
+        const auto command = get_character_from_player();
+        if (command == 'y') {
+            std::cout << "You're smarter than I thought ! Good for you ! Now let's go on an adventure !" << std::endl;
+            break;
+        }
+        else if (command == 'n') {
+            std::cout << "Mmmm there's no point in skipping the explanations you know ? Well, you're lucky I'm in a good mood today ! I'll explain it again but this time listen carefully !" << std::endl;
+            tutorial();
+            break;
+        }
+        else {
+            std::cout << unknow << std::endl;
+        }
     }
 }
 
 void no_tutorial()
 {
     std::cout << "Oh ? Are you really sure ?" << std::endl;
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        std::cout << "All right then ! But I warned you !" << std::endl;
-    }
-    else if (command == 'n') {
-        std::cout << "But you should know ! Do I need to explain the rules of this world to you ?" << std::endl;
-        show_tutorial();
-    }
-    else {
-        std::cout << unknow << std::endl;
+    while (true) {
+        show_commands();
+        const auto command = get_character_from_player();
+        if (command == 'y') {
+            std::cout << "All right then ! But I warned you !" << std::endl;
+            break;
+        }
+        else if (command == 'n') {
+            std::cout << "But you should know ! Do I need to explain the rules of this world to you ?" << std::endl;
+            show_tutorial();
+            break;
+        }
+        else {
+            std::cout << unknow << std::endl;
+        }
     }
 }
 
@@ -150,51 +166,59 @@ void display_game()
 Good ! Now we're going to enter the dungeon !
 But tell me before you go in, have you ever fought monsters before ?
     )" << std::endl;
-    show_commands();
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        did_fight();
-    }
-    else if (command == 'n') {
-        didnt_fight();
-    }
-    else {
-        std::cout << unknow << std::endl;
+    while (true) {
+        show_commands();
+        const auto command = get_character_from_player();
+        if (command == 'y') {
+            did_fight();
+            break;
+        }
+        else if (command == 'n') {
+            didnt_fight();
+            break;
+        }
+        else {
+            std::cout << unknow << std::endl;
+        }
     }
     std::cout << "Do you want me to explain a bit how it works here ?" << std::endl;
-    show_commands();
-    const auto commands = get_character_from_player();
-    if (commands == 'y') {
-        show_tutorial();
-    }
-    else if (commands == 'n') {
-        no_tutorial();
-    }
-    else {
-        std::cout << unknow << std::endl;
+    while (true) {
+        show_commands();
+        const auto commands = get_character_from_player();
+        if (commands == 'y') {
+            show_tutorial();
+            break;
+        }
+        else if (commands == 'n') {
+            no_tutorial();
+            break;
+        }
+        else {
+            std::cout << unknow << std::endl;
+        }
     }
 }
 
 player display_title_screen()
 {
-    // bool   quit = false;
     player hero;
     show_title();
-    show_commands();
-    // while (!quit) {
-    const auto command = get_character_from_player();
-    if (command == 'y') {
-        display_intro();
-        hero = create_player();
-        display_game();
+    while (true) {
+        show_commands();
+        const auto command = get_character_from_player();
+        if (command == 'y') {
+            display_intro();
+            hero = create_player();
+            display_game();
+            break;
+        }
+        else if (command == 'n') {
+            std::cout << "Really ? Ah ... Too bad adventurer ... You don't have the choice !" << std::endl;
+            break;
+        }
+        else {
+            std::cout << unknow << std::endl;
+        }
     }
-    else if (command == 'n') {
-        std::cout << "Really ? Ah ... Too bad adventurer ..." << std::endl;
-        // quit = true;
-    }
-    else {
-        std::cout << unknow << std::endl;
-    }
-    //}
     return hero;
 }

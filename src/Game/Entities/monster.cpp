@@ -21,10 +21,10 @@ Monster set_monster()
     if (tirage < 0.4) {
         monster.name = monster_name[0];
     }
-    else if (0.4 < tirage && tirage < 0.6) {
+    else if (0.4 < tirage && tirage < 0.7) {
         monster.name = monster_name[1];
     }
-    else if (0.6 < tirage && tirage < 0.8) {
+    else if (0.7 < tirage && tirage < 0.9) {
         monster.name = monster_name[2];
     }
     else {
@@ -41,5 +41,5 @@ void show_monster_name(Monster monster)
 
 bool monster_is_alive(Monster monster)
 {
-    return monster.PV;
+    return (monster.PV < 0) ? false : true;
 }

@@ -4,10 +4,10 @@
 #include <vector>
 
 const std::vector<std::string> monster_name = {
-    "Dragon",
     "Gobelin",
     "Spider",
     "Orc",
+    "Dragon",
 };
 
 struct Monster {
