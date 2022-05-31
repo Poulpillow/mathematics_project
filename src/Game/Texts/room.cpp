@@ -14,6 +14,7 @@ void room(player& playerone)
 {
     const int number_monster = new_room();
     if (number_monster == 0) {
+        show_chest_command();
         const auto command = get_command_from_player();
         if (command == "open") {
             open_chest(items);
