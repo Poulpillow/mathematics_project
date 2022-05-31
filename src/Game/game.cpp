@@ -1,14 +1,15 @@
 #include "game.h"
+#include "Entities/player.h"
 #include "Texts/texts.h"
 
-static void introduction()
+static player introduction()
 {
-    display_title_screen();
+    return display_title_screen();
 }
 
 void dungeon_adventure()
 {
-    introduction();
+    player hero = introduction();
 }
 
 static void end()

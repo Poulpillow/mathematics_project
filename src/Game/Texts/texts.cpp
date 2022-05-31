@@ -56,7 +56,7 @@ void bad_name(player& hero)
     hero = set_player();
 }
 
-void create_player()
+player create_player()
 {
     player hero = set_player();
     show_player_name(hero);
@@ -72,6 +72,7 @@ void create_player()
     else {
         std::cout << unknow << std::endl;
     }
+    return hero;
 }
 
 void did_fight()
@@ -172,16 +173,17 @@ But tell me before you go in, have you ever fought monsters before ?
     }
 }
 
-void display_title_screen()
+player display_title_screen()
 {
-    bool quit = false;
+    bool   quit = false;
+    player hero;
     show_title();
     show_commands();
     while (!quit) {
         const auto command = get_character_from_player();
         if (command == 'y') {
             display_intro();
-            create_player();
+            hero = create_player();
             display_game();
         }
         else if (command == 'n') {
@@ -192,4 +194,5 @@ void display_title_screen()
             std::cout << unknow << std::endl;
         }
     }
+    return hero;
 }
