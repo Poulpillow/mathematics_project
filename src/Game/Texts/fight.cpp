@@ -44,6 +44,7 @@ void fight(player& playerone, Monster& monsterone)
     while (player_is_alive(playerone) && monster_is_alive(monsterone)) {
         bool player_turn = true;
         if (player_turn) {
+            show_fight_command();
             const auto command = get_command_from_player();
             if (command == "fight") {
                 std::cout << "fight" << std::endl;
