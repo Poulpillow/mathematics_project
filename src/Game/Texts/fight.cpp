@@ -13,31 +13,28 @@ static void show_fight_command()
 template<typename Ack, typename Def>
 void attack(Ack& fighter, Def& victim)
 {
-    // Annonce des PV
-    std::cout << victim.name << " have " << victim.PV << " PV\n"
-              << std::endl;
-
     int bonus_atk = static_cast<int>(expo(0.5));
     int pv_lost   = victim.def - fighter.atk - bonus_atk;
 
     if (pv_lost < 0) {
         victim.PV += pv_lost;
-        std::cout << victim.name << " loss " << pv_lost << " PV\n"
+        std::cout << victim.name << " lost " << pv_lost << " PV\n"
+                  << std::endl;
+        std::cout << victim.name << " have now " << victim.PV << " PV\n"
                   << std::endl;
     }
     else {
-        std::cout << "MISS\n"
+        std::cout << "The attack does not seem to affect " << victim.name
+                  << std::endl;
+        std::cout << victim.name << " have still " << victim.PV << " PV\n"
                   << std::endl;
     }
-
-    std::cout << victim.name << " have now " << victim.PV << " PV\n"
-              << std::endl;
 }
 
 static void heal(player& player)
 {
     player.PV += 5;
-    std::cout << "You have " << player.PV << std::endl;
+    std::cout << "You have now " << player.PV << " PV" << std::endl;
 }
 
 static void monster_drop(player& playerone)
@@ -62,19 +59,19 @@ void fight(player& playerone, Monster& monsterone)
             }
             else if (command == "run") {
                 if (playerone.PV < 3) {
-                    std::cout << "You ran away from the fight." << std::endl;
+                    std::cout << "You ran away from the fight. It is about time ! You are almost dead !" << std::endl;
                     playerone.number_runway++;
                     break;
                 }
                 else {
                     float tirage = (float)rand() / RAND_MAX;
                     if (tirage < 0.2) {
-                        std::cout << "You ran away from the fight." << std::endl;
+                        std::cout << "You ran away from the fight. You coward !" << std::endl;
                         playerone.number_runway++;
                         break;
                     }
                     else {
-                        std::cout << "You tried to ran away... To bad you miss." << std::endl;
+                        std::cout << "You tried to ran away... To bad you miss... It seems that the big guy in front of you would not let you go" << std::endl;
                     }
                 }
             }

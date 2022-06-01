@@ -14,22 +14,18 @@ void show_commands()
     std::cout << "[Y / N]" << std::endl;
 }
 
-void display_death_message()
-{
-    std::cout << "You died" << std::endl;
-}
-
 void show_title()
 {
     std::cout << R"(
-Welcome to Dungeon Adventure !
-Here you will have to fight against many creatures, each one more terrifying than the other ! What's the point ? For the beauty of battle ? To save a princess ? For the glory ?
+Welcome dear stranger to Dungeon Adventure !
+
+In this dungeon, you will have to fight against many creatures, each one more terrifying than the other ! 
+What's the point you'll ask me ? For the beauty of battlefield ? To save a princess ? For the glory ?
 Well, that's a mystery ! Yes, you'll have to climb to the top of the dungeon to find out !
 
-In this dungeon, you will have to fight monsters in each room ! Let's hope that luck is on your side ! There can be several of them !
-In each room there will also be rewards !
+Let's just hope that luck is on your side ! Maybe you'll find treasures, maybe you'll find more monsters ! 
 
-So, ready to take your sword and shield ?                                               
+So, ready to take your sword and your shield ?                                               
     )" << std::endl;
 }
 
@@ -37,7 +33,7 @@ void display_intro()
 {
     std::cout << R"(
 Excellent ! 
-You'll see it's a fantastic adventure you won't regret it !
+You'll see it's a marvellous adventure you won't regret it !
 Ah ! But I'm missing all my duties !
     )" << std::endl;
 }
@@ -45,7 +41,7 @@ Ah ! But I'm missing all my duties !
 void good_name()
 {
     std::cout << R"(
-Well, you should file a complaint against your parents !
+Well, you should sue your parents for this !
 Anyway, enough with the jokes and let's go !
     )" << std::endl;
 }
@@ -105,7 +101,8 @@ And did you already win ?
 void didnt_fight()
 {
     std::cout << R"(
-What ?! And you accept randoms quests like that from complete strangers ? I wonder if you wouldn't be suicidal on the edge...
+What ?! And you accept randoms quests like that from a complete stranger ? 
+I wonder if you wouldn't be suicidal on the edge...
 Well I can't let you go like that !
     )" << std::endl;
 }
@@ -113,7 +110,27 @@ Well I can't let you go like that !
 void tutorial()
 {
     std::cout << R"(
-Blablabla
+This dungeon is made up of several rooms! I have never gotten very far, but I would say there are at least ten.
+
+There are three types of rooms:
+- Small rooms with only one monster guarding the door
+- Highly secure rooms with two powerful monsters inside !
+- And if you are lucky rooms full of treasures !
+
+Unfortunately for you - but for my personnal pleasure - you will have to fight these monsters with ferocity !
+Do not worry, I will not let you go empty-handed! I will leave you my wooden sword !
+
+It may be useless in battle, but it can be a very good toothpick for dragons !
+In any case, if during a fight you get the idea of running away, try your luck ! 
+But I do not promise that your opponent will let you go out like that. . .
+
+And of course, do not play the big dummy ! 
+There are certainly times to hit, but there are also times to heal yourself !
+Believe me, I have seen a lot of paladdins with a lot of muscles but nothing in the brain !
+The result: they never came out of that dungeon. . . But I believe in you, I like your stupid face !
+
+Anyway, I think with all this you should be ready!
+
     )" << std::endl;
 }
 
@@ -150,7 +167,7 @@ void no_tutorial()
             break;
         }
         else if (command == 'n') {
-            std::cout << "But you should know ! Do I need to explain the rules of this world to you ?" << std::endl;
+            std::cout << "But you should know ! So let's go for explanations !" << std::endl;
             show_tutorial();
             break;
         }
@@ -163,8 +180,8 @@ void no_tutorial()
 void display_game()
 {
     std::cout << R"(
-Good ! Now we're going to enter the dungeon !
-But tell me before you go in, have you ever fought monsters before ?
+Now we're going to enter the dungeon !
+But tell me before you go inside, have you ever fought monsters before ?
     )" << std::endl;
     while (true) {
         show_commands();
@@ -213,7 +230,7 @@ player display_title_screen()
             break;
         }
         else if (command == 'n') {
-            std::cout << "Really ? Ah ... Too bad adventurer ... You don't have the choice !" << std::endl;
+            std::cout << "Really ? Ah ... Too bad adventurer ... You don't have the choice ! MOUAH AHAHAHHH ! Inside you go !" << std::endl;
             break;
         }
         else {
