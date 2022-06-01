@@ -55,7 +55,7 @@ void dungeon_adventure()
     std::cout << "Well now let s see the luck you had in this play !\n"
               << std::endl;
 
-    std::cout << "You passed " << actual_room << " rooms !" << std::endl;
+    std::cout << "You passed " << actual_room - 1 << " rooms !" << std::endl;
     if (actual_room >= 13) {
         std::cout << "And that was not easy !" << std::endl;
     }

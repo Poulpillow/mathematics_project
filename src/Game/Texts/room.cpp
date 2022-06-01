@@ -28,7 +28,7 @@ void room(player& playerone)
     else {
         std::cout << "I think I hear some noise ..." << std::endl;
         if (number_monster == 1) {
-            std::cout << "This is a guard room !\nOh you know, from a different perscpective that's not so bad ! There is only one monster !" << std::endl;
+            std::cout << "This is a guard room !\nOh you know, from a different perspective that's not so bad ! There is only one monster !" << std::endl;
         }
         else if (number_monster == 2) {
             std::cout << "Uhoh that's a high security room !\nAnd the destiny choose for you ... death ! Now FIGHT FIGHT FIGHT" << std::endl;

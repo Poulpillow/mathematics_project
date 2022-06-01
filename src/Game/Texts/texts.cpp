@@ -79,7 +79,7 @@ void did_fight()
 {
     std::cout << R"(
 Ah ! Here is a proud fighter ! 
-And did you already win ?
+And did you even won a fight ?
     )" << std::endl;
     while (true) {
         show_commands();
