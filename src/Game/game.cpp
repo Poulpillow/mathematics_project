@@ -32,64 +32,89 @@ void dungeon_adventure()
     int    actual_room = 1;
 
     // Loop of rooms
-    std::cout << "In the dark dongeon we go !" << std::endl;
+    std::cout << "In the dark dongeon we go !\n"
+              << std::endl;
     while (player_is_alive(hero) && actual_room != number_room + 1) {
-        std::cout << "\n\n\nROOM NUMBER " << actual_room << "\n\n\n";
+        std::cout << "/----------------------------------------------------------------------------------------------------------/\n/------------------------------------------- ROOM NUMBER " << actual_room << " ------------------------------------------------/\n/----------------------------------------------------------------------------------------------------------/"
+                  << "\n\n\n"
+                  << std::endl;
         room(hero);
         actual_room++;
-        std::cout << "Tired yet ? Awww come on ! To the next challenge we go !" << std::endl;
+        if (player_is_alive(hero)) {
+            std::cout << "Tired yet ? Come on ! To the next challenge we go !\n"
+                      << std::endl;
+        }
     }
 
     // End of the Game
-
+    std::cout << "\n/----------------------------------------------------------------------------------------------------------/\n";
     if (hero.PV <= 0) {
-        std::cout << "Ohhhhh come onnnn ! You were so close ! Do you know all the money I bet on your success !\nAt the end I finally began to trust in you\nWhat a shame ...\nOh no do not cry ! I am sorry\nTo apologize, let me show you something to cheer you up !" << std::endl;
+        std::cout << "\nOhhhhh come onnnn ! You were so close ! Do you know all the money I bet on your success !\nAt the end I finally began to trust in you\nWhat a shame ...\nOh no do not cry ! I am sorry\nTo apologize, let me show you something to cheer you up !" << std::endl;
     }
     else {
-        std::cout << "Oh what ? You actually win ?! With only " << hero.PV << " PV left !" << std::endl;
+        std::cout << "\nOh what ? You actually win ?! With only " << hero.PV << " PV left !" << std::endl;
         std::cout << "I misjugded you so much ! Well congrats hero !\nYou want to know what is your price ?\nWell ... uhm ... let me see ...\nOf course ! You won ... Statistics about your play ! What you really thought you will earn something better ?\nToo bad ! " << std::endl;
     }
 
     // Statistics
 
-    std::cout << "Well now let s see the luck you had in this play !\n"
+    std::cout << R"(
+/----------------------------------------------------------------------------------------------------------/
+/-------------------------------------------- STATISTICS --------------------------------------------------/
+/----------------------------------------------------------------------------------------------------------/                                               
+    )" << std::endl;
+
+    std::cout << "\nWell now let s see the luck you had in this play !\n\n"
               << std::endl;
 
-    std::cout << "You passed " << actual_room - 1 << " rooms !" << std::endl;
+    std::cout << "You passed " << actual_room - 1 << " rooms !\n"
+              << std::endl;
     if (actual_room >= 13) {
-        std::cout << "And that was not easy !" << std::endl;
+        std::cout << "And that was not easy !\n"
+                  << std::endl;
     }
 
-    std::cout << "You earned " << hero.gold << " gold during your adventure !" << std::endl;
+    std::cout << "You earned " << hero.gold << " gold during your adventure !\n"
+              << std::endl;
     if (hero.gold >= 30) {
-        std::cout << "Congrats ! You have now the money to by you a shrubbery ! You will thank me later for that !" << std::endl;
+        std::cout << "Congrats ! You have now the money to by you a shrubbery ! You will thank me later for that !\n"
+                  << std::endl;
     }
 
-    std::cout << "You encoutered " << hero.chest_encounters << " chests" << std::endl;
+    std::cout << "You encoutered " << hero.chest_encounters << " chests\n"
+              << std::endl;
     if ((hero.chest_encounters / actual_room) >= 0.7) {
-        std::cout << "If every hero had that luck before ..." << std::endl;
+        std::cout << "If every hero had that luck before ...\n"
+                  << std::endl;
     }
 
-    std::cout << "You encoutered " << hero.monster_encounters << " monsters" << std::endl;
+    std::cout << "You encoutered " << hero.monster_encounters << " monsters\n"
+              << std::endl;
 
-    std::cout << "You ran away " << hero.number_runway << " times" << std::endl;
+    std::cout << "You ran away " << hero.number_runway << " times\n"
+              << std::endl;
     if ((hero.number_runway / actual_room) >= 0.4) {
-        std::cout << "That's a little bit exagerated, do not you think ?" << std::endl;
+        std::cout << "That's a little bit exagerated, do not you think ?\n"
+                  << std::endl;
     }
 
-    int luck_monsters = hero.monster_encounters / actual_room;
+    float luck_monsters = static_cast<float>(hero.monster_encounters) / static_cast<float>(actual_room);
     std::cout << "The average of monsters per room is " << luck_monsters << std::endl;
     if (luck_monsters <= 0.5) {
-        std::cout << "A lot of people would love to live this peacefully !" << std::endl;
+        std::cout << "A lot of people would love to live this peacefully !\n"
+                  << std::endl;
     }
     else if (luck_monsters >= 0.5 && luck_monsters <= 1) {
-        std::cout << "Did you see a four-leaf clover recently ?" << std::endl;
+        std::cout << "Did you see a four-leaf clover recently ?\n"
+                  << std::endl;
     }
     else if (luck_monsters >= 1 && luck_monsters <= 1.5) {
-        std::cout << "You choose to live in hard mode do you ?" << std::endl;
+        std::cout << "You choose to live in hard mode do you ?\n"
+                  << std::endl;
     }
     else {
-        std::cout << "Wow that's far beyond the statistics ... I think Gaia does not like you ..." << std::endl;
+        std::cout << "Wow that's far beyond the statistics ... I think Gaia does not like you ...\n"
+                  << std::endl;
     }
 
     // Last message
@@ -97,7 +122,8 @@ void dungeon_adventure()
               << "Maybe you want to try it again ?\n[Y/N]" << std::endl;
     const auto command = get_character_from_player();
     if (command == 'y') {
-        std::cout << "Good choice my friend ! Let's go back !" << std::endl;
+        std::cout << "Good choice my friend ! Let's go back !\n"
+                  << std::endl;
         dungeon_adventure();
     }
     else {

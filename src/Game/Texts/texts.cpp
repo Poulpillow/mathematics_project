@@ -17,7 +17,9 @@ void show_commands()
 void show_title()
 {
     std::cout << R"(
-Welcome dear stranger to Dungeon Adventure !
+/----------------------------------------------------------------------------------------------------------/
+/---------------------------- Welcome dear stranger to Dungeon Adventure ! --------------------------------/
+/----------------------------------------------------------------------------------------------------------/
 
 In this dungeon, you will have to fight against many creatures, each one more terrifying than the other ! 
 What's the point you'll ask me ? For the beauty of battlefield ? To save a princess ? For the glory ?

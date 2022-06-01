@@ -7,7 +7,7 @@
 
 static void show_fight_command()
 {
-    std::cout << "[Fight / Run / Heal]" << std::endl;
+    std::cout << "What do you do ?\n[Fight / Run / Heal]" << std::endl;
 }
 
 template<typename Ack, typename Def>
@@ -18,7 +18,7 @@ void attack(Ack& fighter, Def& victim)
 
     if (pv_lost < 0) {
         victim.PV += pv_lost;
-        std::cout << victim.name << " lost " << pv_lost << " PV\n"
+        std::cout << victim.name << " lost " << pv_lost << " PV"
                   << std::endl;
         std::cout << victim.name << " have now " << victim.PV << " PV\n"
                   << std::endl;
@@ -29,12 +29,16 @@ void attack(Ack& fighter, Def& victim)
         std::cout << victim.name << " have still " << victim.PV << " PV\n"
                   << std::endl;
     }
+    std::cout << "/----------------------------------------------------------------------------------------------------------/\n\n";
 }
 
 static void heal(player& player)
 {
     player.PV += 5;
-    std::cout << "You have now " << player.PV << " PV" << std::endl;
+    std::cout << "You have now " << player.PV << " PV\n"
+              << std::endl;
+    std::cout << "/----------------------------------------------------------------------------------------------------------/\n"
+              << std::endl;
 }
 
 static void monster_drop(player& playerone)
@@ -59,19 +63,28 @@ void fight(player& playerone, Monster& monsterone)
             }
             else if (command == "run") {
                 if (playerone.PV < 3) {
-                    std::cout << "You ran away from the fight. It is about time ! You are almost dead !" << std::endl;
+                    std::cout << "You ran away from the fight. It is about time ! You are almost dead !\n"
+                              << std::endl;
+                    std::cout << "/----------------------------------------------------------------------------------------------------------/\n"
+                              << std::endl;
                     playerone.number_runway++;
                     break;
                 }
                 else {
                     float tirage = (float)rand() / RAND_MAX;
                     if (tirage < 0.2) {
-                        std::cout << "You ran away from the fight. You coward !" << std::endl;
+                        std::cout << "You ran away from the fight. You coward !\n"
+                                  << std::endl;
+                        std::cout << "/----------------------------------------------------------------------------------------------------------/\n"
+                                  << std::endl;
                         playerone.number_runway++;
                         break;
                     }
                     else {
-                        std::cout << "You tried to ran away... To bad you miss... It seems that the big guy in front of you would not let you go" << std::endl;
+                        std::cout << "You tried to ran away... Too bad you miss... It seems that the big guy in front of you would not let you go\n"
+                                  << std::endl;
+                        std::cout << "/----------------------------------------------------------------------------------------------------------/\n"
+                                  << std::endl;
                     }
                 }
             }

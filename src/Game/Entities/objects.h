@@ -17,5 +17,5 @@ inline objects set_object(const std::string& name, const int& effect)
 
 inline void show_objects(const objects& item)
 {
-    std::cout << "You got a " << item.name << std::endl;
+    std::cout << "\nYou got a " << item.name << std::endl;
 };

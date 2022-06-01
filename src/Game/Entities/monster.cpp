@@ -56,7 +56,8 @@ Monster set_monster()
 
 void show_monster_name(Monster monster)
 {
-    std::cout << "A " << monster.name << " appeared !" << std::endl;
+    std::cout << "\nA " << monster.name << " appeared !"
+              << std::endl;
 }
 
 bool monster_is_alive(Monster monster)

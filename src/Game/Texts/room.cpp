@@ -10,7 +10,8 @@ void room(player& playerone)
 {
     const int number_monster = (rand() % 3);
     if (number_monster == 0) {
-        std::cout << "You are a lucky guy today ! That's a treasure room !\nEnjoy the feeling of being rich ... " << std::endl;
+        std::cout << "You are a lucky guy today ! That's a treasure room !\nEnjoy the feeling of being rich ...\n"
+                  << std::endl;
         while (true) {
             show_chest_command();
             const auto command = get_command_from_player();
@@ -23,7 +24,7 @@ void room(player& playerone)
                 std::cout << unknow << std::endl;
             }
         }
-        std::cout << "Nice catch ! Now let's go back to adventure !" << std::endl;
+        std::cout << "\nNice catch ! Now let's go back to adventure !" << std::endl;
     }
     else {
         std::cout << "I think I hear some noise ..." << std::endl;
