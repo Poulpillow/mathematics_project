@@ -4,7 +4,7 @@
 #include <vector>
 
 const std::vector<std::string> monster_name = {
-    "Gobelin",
+    "Goblin",
     "Spider",
     "Orc",
     "Dragon",
